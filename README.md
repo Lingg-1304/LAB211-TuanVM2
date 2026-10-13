@@ -1,7 +1,5 @@
 # LAB211-TuanVM2
 
-# LAB211-TuanVM2
-
 **1. Kiến trúc chương trình và Hàm `main` (Top-down Approach)**
 
 - Người code bắt buộc phải xây dựng khung chương trình thông qua hàm `main` trước, sau đó mới tiến hành code các thành phần chi tiết khác.
