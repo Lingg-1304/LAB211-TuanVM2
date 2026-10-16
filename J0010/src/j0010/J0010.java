@@ -9,37 +9,36 @@ import java.util.Scanner;
  */
 public class J0010 {
     public static void main(String[] args) {
-        // step 1: Users input size of array
-        int sizeOfArray = inputArraySize();
+        // step 1: Enter number of array
+        int numOfArray = enterNumOfArray();
 
         // step 2: Users input search value
         int searchValue = inputSearchValue();
 
         // step 3: Generate random integer in array
-        int array[] = generateRandomIntegerInArray(sizeOfArray);
+        int array[] = generateRandomIntegerInArray(numOfArray);
 
         // step 4: Display array
         displayArray(array);
 
-        // step 5: Perform Linear Search to find index of search Value in array
-        int indexOfSearchValue = linearSearchFindIndexOfSearchValue(array, searchValue);
+        // step 5: Find index of search value in array
+        int indexOfSearchValue = findIndexOfSearchValue(array, searchValue);
 
         // step 6: Display index of search value in array
         displayIndexOfSearchValue(searchValue, indexOfSearchValue);
     }
 
-    private static int inputArraySize() {
+    private static int enterNumOfArray() {
         System.out.println("Enter number of array: ");
 
         Scanner sc = new Scanner(System.in);
-        // Loop until user input valid Positive integer
+        // Infinite loop
         while (true) {
             String inputUser = sc.nextLine();
             // Check if input user is empty
             if (inputUser.isEmpty()) {
                 System.out.println("Input must not be empty. Enter again:");
             }
-            // User input is number
             try {
                 int num = Integer.parseInt(inputUser);
                 // Check if input user is Positive integer
@@ -61,14 +60,13 @@ public class J0010 {
         System.out.println("Enter search value: ");
 
         Scanner sc = new Scanner(System.in);
-        // Loop until user input valid Positive integer
+        // Infinite loop
         while (true) {
             String inputUser = sc.nextLine();
             // Check if input user is empty
             if (inputUser.isEmpty()) {
                 System.out.println("Input must not be empty. Enter again:");
             }
-            // User input is number
             try {
                 int num = Integer.parseInt(inputUser);
                 // Check if input user is Positive integer
@@ -89,7 +87,7 @@ public class J0010 {
     private static int[] generateRandomIntegerInArray(int sizeOfArray) {
         Random random = new Random();
         int[] array = new int[sizeOfArray];
-        // Loop to fill value element in array
+        // Loop to traverse each element in array
         for (int i = 0; i < sizeOfArray; i++) {
             array[i] = random.nextInt(sizeOfArray) + 1;
         }
@@ -101,7 +99,7 @@ public class J0010 {
 
         // Loop to access each element in array from first to last
         for (int i = 0; i < array.length; i++) {
-            // Check if element is last element in array to display "]"
+            // Check if element is last element in array
             if (i == array.length - 1) {
                 System.out.printf("%d]", array[i]);
             } else {
@@ -111,7 +109,7 @@ public class J0010 {
         System.out.println();
     }
 
-    private static int linearSearchFindIndexOfSearchValue(int[] array, int searchValue) {
+    private static int findIndexOfSearchValue(int[] array, int searchValue) {
         // Loop access each element in array from first to last
         for (int i = 0; i < array.length; i++) {
             // Check if first element in array is equal to search value
