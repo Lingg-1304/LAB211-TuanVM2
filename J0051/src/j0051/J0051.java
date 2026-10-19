@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class J0051 {
 
     public static void main(String[] args) {
-        // Infinite loop until user choose exit program
+        // Infinite loop
         while(true){
             //Step 1: Display menu
             displayMenu();
@@ -18,16 +18,14 @@ public class J0051 {
             //Step 2: Enter an option
             int choice = enterAnOption();
             
-            switch(choice){
-                //Step 3: Display result normal calculator  
+            //Step 3: Calculator based on option 
+            switch(choice){ 
                 case 1: 
                     Calculator.normalCalculator();
                     break;
-                //Step 4: Display result BMI calculator
                 case 2:
                     Calculator.BMICalculator();
                     break;
-                //Step 5: Exit program
                 case 3:
                     return;
             }

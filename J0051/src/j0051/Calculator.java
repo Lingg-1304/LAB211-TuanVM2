@@ -12,35 +12,44 @@ import java.util.Scanner;
  * @author Lingg
  */
 public class Calculator {
-
+    
+    private enum Operator {
+        PLUS,       // +
+        MINUS,      // -
+        MULTIPLY,   // *
+        DIVIDE,     // /
+        POWER,      // ^
+        EQUALS      // =
+    }
+    
     static void normalCalculator() {
         System.out.println("----- Normal Calculator -----");
         Double memory = enterNumber();
-        // Infinite loop until user enter '='
+        // Infinite loop
         while (true) {
-            String operator = enterOperator();
+            Operator operator = enterOperator();
             double number;
             switch (operator) {
-                case "+":
+                case PLUS:
                     number = enterNumber();
                     memory += number;
                     System.out.printf("Memory:%.1f\n", memory);
                     break;
-                case "-":
+                case MINUS:
                     number = enterNumber();
                     memory -= number;
                     System.out.printf("Memory:%.1f\n", memory);
                     break;
-                case "*":
+                case MULTIPLY:
                     number = enterNumber();
                     memory *= number;
                     System.out.printf("Memory:%.1f\n", memory);
                     break;
-                case "/":
+                case DIVIDE:
                     //Infinite loop
                     while(true){
                         number = enterNumber();
-                        //Check if valid arithmetic
+                        //Check if valid number
                         if(number == 0.0){
                             System.out.println("Can't divide by 0!");
                         }
@@ -51,12 +60,12 @@ public class Calculator {
                         }
                     }
                     break;
-                case "^":
+                case POWER:
                     number = enterNumber();
                     memory = Math.pow(memory, number);
                     System.out.printf("Memory:%.1f\n", memory);
                     break;
-                case "=":
+                case EQUALS:
                     System.out.printf("Result:%.1f\n", memory);
                     return;
             }
@@ -83,8 +92,8 @@ public class Calculator {
             }
         }
     }
-
-    private static String enterOperator() {
+    
+    private static Operator enterOperator() {
         Scanner sc = new Scanner(System.in);
         
         //Infinite loop
@@ -96,15 +105,34 @@ public class Calculator {
                 System.out.println("Input must not be empty!");
                 continue;
             }
-            //Check if input is valid operator
-            if    (input.equals("+") || input.equals("-") 
-                || input.equals("*") || input.equals("/") 
-                || input.equals("^") || input.equals("=")){
-                return input;
+            
+            Operator operator = checkOperator(input);
+            // Check if operator is valid
+            if(operator != null){
+                return operator;
             }
             else{
-                System.out.println("Please enter (+, -, *, /, ^)");
+                System.out.println("Please input (+, -, *, /, ^)");
             }
+        }
+    }
+    
+    private static Operator checkOperator(String operator) {
+        switch(operator){
+            case "+":
+                return Operator.PLUS;
+            case "-":
+                return Operator.MINUS;
+            case "*":
+                return Operator.MULTIPLY;
+            case "/":
+                return Operator.DIVIDE;
+            case "^":
+                return Operator.POWER;
+            case "=":
+                return Operator.EQUALS;
+            default:
+                return null;
         }
     }
     
@@ -187,5 +215,7 @@ public class Calculator {
             }
         }     
     }
+
+    
 
 }
