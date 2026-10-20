@@ -24,11 +24,11 @@ public class Calculator {
     
     static void normalCalculator() {
         System.out.println("----- Normal Calculator -----");
-        Double memory = enterNumber();
+        float memory = enterNumber();
         // Infinite loop
         while (true) {
             Operator operator = enterOperator();
-            double number;
+            float number;
             switch (operator) {
                 case PLUS:
                     number = enterNumber();
@@ -62,7 +62,7 @@ public class Calculator {
                     break;
                 case POWER:
                     number = enterNumber();
-                    memory = Math.pow(memory, number);
+                    memory = (float)Math.pow(memory, number);
                     System.out.printf("Memory:%.1f\n", memory);
                     break;
                 case EQUALS:
@@ -72,7 +72,7 @@ public class Calculator {
         }
     }
 
-    private static Double enterNumber() {
+    private static float enterNumber() {
         Scanner sc = new Scanner(System.in);
         
         //Infinite loop
@@ -85,7 +85,7 @@ public class Calculator {
                 continue;
             }
             try{
-                double number = Double.parseDouble(input);
+                float number = Float.parseFloat(input);
                 return number;
             }catch(NumberFormatException e){
                 System.out.println("Input must be numeric data!");
@@ -137,9 +137,9 @@ public class Calculator {
     }
     
     static void BMICalculator() {
-        double weight = enterWeight();
-        double height = enterHeight()/100;
-        double BMI = (double)weight/(height*height);
+        float weight = enterWeight();
+        float height = (float)enterHeight()/100;
+        float BMI = (float)weight/(height*height);
         
         System.out.printf("BMI number: %.2f\n", BMI);
         System.out.print("BMI Status: ");
@@ -166,7 +166,7 @@ public class Calculator {
         }
     }
 
-    private static double enterWeight() {
+    private static float enterWeight() {
         Scanner sc = new Scanner(System.in);
         
         //Infinite loop
@@ -179,7 +179,7 @@ public class Calculator {
                 continue;
             }
             try{
-                double number = Double.parseDouble(input);
+                float number = Float.parseFloat(input);
                 //Check if number is positive
                 if(number > 0) return number;
                 else{
@@ -204,7 +204,7 @@ public class Calculator {
                 continue;
             }
             try{
-                double number = Double.parseDouble(input);
+                float number = Float.parseFloat(input);
                 //Check if number is positive
                 if(number > 0) return number;
                 else{
