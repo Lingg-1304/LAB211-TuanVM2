@@ -2,7 +2,6 @@ package j0010;
 
 import java.util.Random;
 import java.util.Scanner;
-
 /**
  *
  * @author Lingg
