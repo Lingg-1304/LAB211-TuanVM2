@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package j0051;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Lingg
- */
 public class Calculator {
     
     private enum Operator {
@@ -49,14 +41,18 @@ public class Calculator {
                     //Infinite loop
                     while(true){
                         number = enterNumber();
-                        //Check if valid number
-                        if(number == 0.0){
-                            System.out.println("Can't divide by 0!");
-                        }
-                        else{
+                        
+                        try{
+                           //Check if valid number
+                            if(number == 0.0){
+                                throw new ArithmeticException();
+                            } 
                             memory /= number;
                             System.out.printf("Memory:%.1f\n", memory);
                             break;
+                        }
+                        catch(ArithmeticException e){
+                            System.out.println("Can't divide by 0!");
                         }
                     }
                     break;
@@ -108,12 +104,17 @@ public class Calculator {
             
             Operator operator = checkOperator(input);
             // Check if operator is valid
-            if(operator != null){
+            try{
+                //Check if operator is null
+                if(operator == null){
+                    throw new NullPointerException();
+                }
                 return operator;
             }
-            else{
+            catch(NullPointerException e){
                 System.out.println("Please input (+, -, *, /, ^)");
             }
+            
         }
     }
     
